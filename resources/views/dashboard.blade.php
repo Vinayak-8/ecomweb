@@ -11,17 +11,27 @@
                                     </div>
                                     <div>
                                         <form  action="{{route('searchProduct')}}" class="d-flex gap-1">
-                                            <input type="text" id="search" name="q" placeholder="NAME & PRICE SEARCH" class="form-control">
+                                            <input type="text" id="search" name="q" placeholder="SEARCH " class="form-control">
                                             <span> <button class="btn btn-outline-primary h-100" type="submit"> Search </button></span>
                                         </form>
                                     </div>
-                                    <div class="col-md-4 mb-3">CATEGORY LIST
+                                    <!-- <div class="col-md-4 mb-3">CATEGORY LIST
                                         <select class="form-select col-md-4" name="cate_id" >
                                             <option >Category List</option>  
                                             @foreach($category as $item) 
                                                 <option value="{{$item->id}}">{{$item->name}}</option>
                                             @endforeach                                                                             
                                         </select>
+                                    </div> -->
+                                    <div class="dropdown">
+                                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                Category List
+                                            </button>
+                                                <ul class="dropdown-menu">
+                                                    @foreach($category as $item)                                                     
+                                                        <li class="dropdown-item" value="{{$item->id}}">{{$item->name}}</li>
+                                                    @endforeach                                                                                                              
+                                                </ul>
                                     </div>
                                 </div>
                             </div>

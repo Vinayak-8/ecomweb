@@ -19,20 +19,50 @@ class ProductController extends Controller
     public function store(Request $request)
     {
          $product=new Product();
-         $product->cate_id=$request->cate_id; 
-         $product->name=$request->name; 
- 
+         $validateProduct = $request->validate([
+            'cate_id'=>'required',
+            'name'=> 'required',
+            'price'=>'required',
+            'description'=>'required',
+            'file'=>'required'
+         ],[
+            'cate_id.required' => 'category is required',
+            'name.required' => 'Name is required',
+            'price.required' => 'price is required',
+            'description.required' => 'description is required',
+            'file.required' => 'image is required'
+         ]);
+
+         $data = [
+            "cate_id" => $request->cate_id,
+            "name" => $request->name,
+            "description" => $request->description,
+            "price" => $request->price
+         ];
+
+         
          $file=$request->file;		        
          $filename=time().'.'.$file->getClientOriginalExtension();
          $request->file->move('assets/product',$filename);
-         $product->file=$filename;
- 
-         $product->price=$request->price;
-         $product->description=$request->description;
-         $product->save();
+         $data['file']=$filename;
 
+        //  $product->cate_id=$request->cate_id; 
+        //  $product->name=$request->name; 
+ 
+        //  $file=$request->file;		        
+        //  $filename=time().'.'.$file->getClientOriginalExtension();
+        //  $request->file->move('assets/product',$filename);
+        //  $product->file=$filename;
+ 
+        //  $product->price=$request->price;
+        //  $product->description=$request->description;
+        //  $product->save();
+
+
+         $product=Product::create($data);
          return redirect()->route('dash');
     }
+    
 
     public function searchProduct(Request $req){
             $category=Category::all();

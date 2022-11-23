@@ -10,25 +10,25 @@
                 </p>            
                     <div class="row">
                         <div class="col-md-12 mb-3">
-                        <select class="form-select" name="cate_id" aria-label="Default select example">
-                            <option value="">Select a Category</option> 
-                            @foreach($category as $item) 
-                                <option value="{{$item->id}}">{{$item->name}}</option>
-                            @endforeach
-                        </select>
-
+                            <select class="form-select" name="cate_id"  aria-label="Default select example">
+                                <option value="">Select a Category</option> 
+                                @foreach($category as $item) 
+                                    <option value="{{$item->id}}" >{{$item->name}}</option>                                
+                                @endforeach  
+                            </select>
+                            @if ($errors->has('cate_id'))
+                                <span class="text-danger">{{ $errors->first('cate_id') }}</span>
+                            @endif
                         </div>
                             <div class="col">
                                             <div class="form-group">
                                                 <label class="col-sm-3 col-form-label">Name <span class="text-danger">*</span> </label>
                                                 <div class="col-sm-6">
-                                                    <input type="text" value="{{ old('name') }}" required name="name"
-                                                        class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}">
-                                                    @if ($errors->has('name'))
-                                                        <span class="invalid feedback" role="alert">
-                                                            <strong class="text-danger">{{ $errors->first('name') }}.</strong>
-                                                        </span>
-                                                    @endif
+                                                    <input type="text" name="name"
+                                                        class="form-control" value="{{ old('name') }}">
+                                                        @if ($errors->has('name'))
+                                                            <span class="text-danger">{{ $errors->first('name') }}</span>
+                                                        @endif
                                                 </div>
                                             </div>
                             </div>
@@ -36,7 +36,10 @@
                                         <div class="form-group ">
                                             <label class="col-sm-3 col-form-label" for="Price">Price</label>
                                             <div class="col-sm-6">
-                                                <input type="number" class="form-control" name="price" id="price" placeholder="Price" required>
+                                                <input type="number" class="form-control" name="price" id="price"  value="{{ old('price') }}" placeholder="Price" >
+                                                @if ($errors->has('price'))
+                                                    <span class="text-danger">{{ $errors->first('price') }}</span>
+                                                @endif
                                             </div>
                                         </div>
                             </div>
@@ -47,15 +50,21 @@
                                             <div class="form-group ">
                                                 <label class="col-sm-3 col-form-label">Image</label>
                                                 <div class="col-sm-6">
-                                                    <input type="file" name="file" id="file" class="form-control">
+                                                    <input type="file" name="file" id="file" class="form-control"  >
                                                 </div>
+                                                @if ($errors->has('file'))
+                                                    <span class="text-danger">{{ $errors->first('file') }}</span>
+                                                @endif
                                             </div>
                             </div>
 
                             <div class="col">
                                         <div class="form-group col-6">
                                             <label class="col-sm-4 col-form-label" for="Description" >Description</label>
-                                            <textarea class="form-control" name="description" rows="10" placeholder="Description" required></textarea>
+                                            <textarea class="form-control"  name="description" rows="10" placeholder="Description" ></textarea>
+                                            @if ($errors->has('description'))
+                                                <span class="text-danger">{{ $errors->first('description') }}</span>
+                                            @endif
                                         </div>
                             </div>
                     </div>
