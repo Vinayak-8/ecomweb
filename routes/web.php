@@ -19,19 +19,27 @@ use App\Models\Product;
 
 // Route::get('/', function () {
 //     return view('welcome');
-// });
+// });ss
 
 Route::get('/', function () {
-    $product=Product::get();
-    $category=Category::get();
-    return view('dashboard', ['products'=> $product, 'category'=>$category]);
+    $products=Product::get();
+    foreach($products as $prod) {
+        $prod['cat_name'] = Category::where('id', $prod->cate_id)->first(['name'])->name;
+    }
+    $categorys=Category::get();
+    return view('dashboard', ['products'=> $products, 'category'=>$categorys]);
 })->name("dash");
 
 Route::get('addProduct', [ProductController::class, 'addProduct'])->name("addProduct");
 Route::post('upload',[ProductController::class,'store'])->name('upload');
+Route::get('searchProduct', [ProductController::class,'searchProduct'])->name('searchProduct');
+
 
 Route::get('addCategory', [CategoryController::class, 'addCategory'])->name("addCategory");
 Route::post('upload1',[CategoryController::class,'store'])->name('upload1');
+
+
+
 
 
 

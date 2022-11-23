@@ -1,12 +1,6 @@
 @extends('layouts.app')
 @section('title', 'Dashboard')
 
-@if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
-@endif
-
 @section('content')
     <div class="card">
                         <div class=" card-body">
@@ -15,9 +9,15 @@
                                     <div>
                                         <h5 class="card-title ">Products</h5>
                                     </div>
+                                    <div>
+                                        <form  action="{{route('searchProduct')}}" class="d-flex gap-1">
+                                            <input type="text" id="search" name="q" placeholder="NAME & PRICE SEARCH" class="form-control">
+                                            <span> <button class="btn btn-outline-primary h-100" type="submit"> Search </button></span>
+                                        </form>
+                                    </div>
                                     <div class="col-md-4 mb-3">CATEGORY LIST
-                                        <select class="form-select col-md-4" name="cate_id" aria-label="Default select example">
-                                            <option value="">Category List</option>  
+                                        <select class="form-select col-md-4" name="cate_id" >
+                                            <option >Category List</option>  
                                             @foreach($category as $item) 
                                                 <option value="{{$item->id}}">{{$item->name}}</option>
                                             @endforeach                                                                             
@@ -32,6 +32,7 @@
                                         <th>name</th>
                                         <th>Description</th>
                                         <th>Image</th>
+                                        <th>Category</th>
                                         <th>Price</th>
                                     </tr>
                                     @foreach($products as $products)
@@ -42,10 +43,12 @@
                                         <td>
                                                 <img src="{{ asset('assets/product/' . $products->file) }}" width="250px" height="250px"  alt=""></a>
                                         </td>
+                                        <td>
+                                            {{$products['cat_name']}}
+                                        </td>
                                         <td>{{ $products['price'] }}</td>                                   
                                     </tr>
-                                    @endforeach
-                                    
+                                    @endforeach                                    
                                 </table>                            
                         </div>                
     </div> 

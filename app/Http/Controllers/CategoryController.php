@@ -15,18 +15,16 @@ class CategoryController extends Controller
     public function store(Request $request){
         $data= new Category();
 
-
         $request->validate([
             'name' => 'required',
         ]);
 
         $data->name=$request->name;
-        $data->save();        
-    
-        // return view('dashboard')->with('success','Category Added successfully.');
+        $data->save();
      
-        return redirect()->route('dash')
-                        ->with('success','Product created successfully.');
+        return redirect()->route('dash');
 
     }
+
+    
 }
