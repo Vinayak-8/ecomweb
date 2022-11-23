@@ -13,7 +13,7 @@
                         <div class=" d-flex m-4  justify-content-between">
                             <a href="{{route('addProduct')}}"><button type="button" class="btn btn-primary "  > ADD PRODUCT</button></a>                
                             <a href="{{url('/')}}"><button type="button" class="btn btn-primary "  > DASHBOARD</button></a>                
-                            <a href="{{route('addCategory')}}"><button type="button" class="btn btn-primary "  > ADD CATEGORY</button></a>                
+                            <a href="{{route('addCategory')}}"><button type="button" class="btn btn-primary "  > ADD CATEGORY</button></a>                               
                         </div>                      
                     </div>
                 </div>

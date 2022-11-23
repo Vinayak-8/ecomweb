@@ -9,6 +9,15 @@
                     Add Product
                 </p>            
                     <div class="row">
+                        <div class="col-md-12 mb-3">
+                        <select class="form-select" name="cate_id" aria-label="Default select example">
+                            <option value="">Select a Category</option> 
+                            @foreach($category as $item) 
+                                <option value="{{$item->id}}">{{$item->name}}</option>
+                            @endforeach
+                        </select>
+
+                        </div>
                             <div class="col">
                                             <div class="form-group">
                                                 <label class="col-sm-3 col-form-label">Name <span class="text-danger">*</span> </label>

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Models\Category;
 use App\Models\Product;
 
 /*
@@ -22,8 +23,10 @@ use App\Models\Product;
 
 Route::get('/', function () {
     $product=Product::get();
-    return view('dashboard', ['products'=> $product]);
+    $category=Category::get();
+    return view('dashboard', ['products'=> $product, 'category'=>$category]);
 })->name("dash");
+
 Route::get('addProduct', [ProductController::class, 'addProduct'])->name("addProduct");
 Route::post('upload',[ProductController::class,'store'])->name('upload');
 
