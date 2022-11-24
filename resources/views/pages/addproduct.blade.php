@@ -5,11 +5,11 @@
         <div class="card-body ">
             <form  enctype="multipart/form-data"  method="post" action="{{url('upload')}}">
                 @csrf
-                <p class="card-description">
-                    Add Product
+                <p class="card-header mb-2">
+                    <b>Add Product</b> 
                 </p>            
                     <div class="row">
-                        <div class="col-md-12 mb-3">
+                        <div class=" col-sm-12 col-md-12 mb-3">
                             <select class="form-select" name="cate_id"  aria-label="Default select example">
                                 <option value="">Select a Category <span class="text-danger">*</span></option> 
                                 @foreach($category as $item) 
@@ -20,7 +20,7 @@
                                 <span class="text-danger">{{ $errors->first('cate_id') }}</span>
                             @endif
                         </div>
-                            <div class="col">
+                            <div class="col-sm-12 col-md-6 col-lg-6">
                                             <div class="form-group">
                                                 <label class="col-sm-3 col-form-label">Name <span class="text-danger">*</span> </label>
                                                 <div class="col-sm-6">
@@ -32,7 +32,7 @@
                                                 </div>
                                             </div>
                             </div>
-                            <div class="col">
+                            <div class="col-sm-12 col-md-6 col-lg-6">
                                         <div class="form-group ">
                                             <label class="col-sm-3 col-form-label" for="Price">Price <span class="text-danger">*</span></label>
                                             <div class="col-sm-6">
@@ -46,7 +46,7 @@
                     </div>
 
                     <div class="row">
-                            <div class="col">
+                            <div class="col-sm-12 col-md-6 col-lg-6">
                                             <div class="form-group ">
                                                 <label class="col-sm-3 col-form-label">Image <span class="text-danger">*</span></label>
                                                 <div class="col-sm-6">
@@ -58,10 +58,12 @@
                                             </div>
                             </div>
 
-                            <div class="col">
-                                        <div class="form-group col-6">
-                                            <label class="col-sm-4 col-form-label" for="Description" >Description <span class="text-danger">*</span></label>
-                                            <textarea class="form-control"  name="description" rows="10" placeholder="Description" ></textarea>
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                        <div class="form-group col-sm-12">
+                                            <label class="col-sm-12 col-form-label" for="Description" >Description <span class="text-danger">*</span></label>
+                                            <div class="col-sm-6">                                            
+                                                <textarea class="form-control "  name="description"  placeholder="Description" ></textarea>
+                                            </div>
                                             @if ($errors->has('description'))
                                                 <span class="text-danger">{{ $errors->first('description') }}</span>
                                             @endif
