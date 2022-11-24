@@ -37,6 +37,7 @@ Route::get('searchProduct', [ProductController::class,'searchProduct'])->name('s
 
 Route::get('addCategory', [CategoryController::class, 'addCategory'])->name("addCategory");
 Route::post('upload1',[CategoryController::class,'store'])->name('upload1');
+Route::get('view-category/{id}',[CategoryController::class,'viewCategory'])->name("viewCategory");
 
 
 

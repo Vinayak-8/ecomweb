@@ -11,7 +11,7 @@
                     <div class="row">
                         <div class="col-md-12 mb-3">
                             <select class="form-select" name="cate_id"  aria-label="Default select example">
-                                <option value="">Select a Category</option> 
+                                <option value="">Select a Category <span class="text-danger">*</span></option> 
                                 @foreach($category as $item) 
                                     <option value="{{$item->id}}" >{{$item->name}}</option>                                
                                 @endforeach  
@@ -34,7 +34,7 @@
                             </div>
                             <div class="col">
                                         <div class="form-group ">
-                                            <label class="col-sm-3 col-form-label" for="Price">Price</label>
+                                            <label class="col-sm-3 col-form-label" for="Price">Price <span class="text-danger">*</span></label>
                                             <div class="col-sm-6">
                                                 <input type="number" class="form-control" name="price" id="price"  value="{{ old('price') }}" placeholder="Price" >
                                                 @if ($errors->has('price'))
@@ -48,7 +48,7 @@
                     <div class="row">
                             <div class="col">
                                             <div class="form-group ">
-                                                <label class="col-sm-3 col-form-label">Image</label>
+                                                <label class="col-sm-3 col-form-label">Image <span class="text-danger">*</span></label>
                                                 <div class="col-sm-6">
                                                     <input type="file" name="file" id="file" class="form-control"  >
                                                 </div>
@@ -60,7 +60,7 @@
 
                             <div class="col">
                                         <div class="form-group col-6">
-                                            <label class="col-sm-4 col-form-label" for="Description" >Description</label>
+                                            <label class="col-sm-4 col-form-label" for="Description" >Description <span class="text-danger">*</span></label>
                                             <textarea class="form-control"  name="description" rows="10" placeholder="Description" ></textarea>
                                             @if ($errors->has('description'))
                                                 <span class="text-danger">{{ $errors->first('description') }}</span>
