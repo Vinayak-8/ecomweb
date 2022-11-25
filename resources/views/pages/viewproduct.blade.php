@@ -30,7 +30,7 @@
                         <td>{{ $products['name'] }}</td>
                         <td>{{ $products['description'] }}</td>
                         <td>
-                                <img src="{{ asset('assets/product/' . $products->file) }}"   alt=""></a>
+                                <img src="{{ asset('assets/product/' . $products->file) }}" height="250px" width="250px" alt=""></a>
                         </td>                                        
                         <td>{{ $products['price'] }}</td>                                   
                     </tr>
@@ -38,5 +38,4 @@
             </table>
         </div>
     </div>
-
 @endsection

@@ -27,12 +27,10 @@
                                         </div>
                             </div>
                     </div>
-
                     <div class="row d-flex justify-content-center mt-4">
-                        <button type="submit" class="btn btn-primary mr-8 col-6">Submit</button>
+                        <button type="submit" class="btn btn-primary mr-8 col-6" >Submit</button>
                     </div>
-
             </form>
-        </div>
-        
+        </div>        
 @endsection
+

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use RealRashid\SweetAlert\Facades\Alert;
 
 
 class ProductController extends Controller
@@ -57,8 +58,8 @@ class ProductController extends Controller
         //  $product->price=$request->price;
         //  $product->description=$request->description;
         //  $product->save();
-
-
+        
+        Alert::toast('Product Added Successfully', 'success');
          $product=Product::create($data);
          return redirect()->route('dash');
     }
